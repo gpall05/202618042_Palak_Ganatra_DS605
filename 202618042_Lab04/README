@@ -1,1 +1,135 @@
+# Airbnb Price Prediction
+
+## Project Overview
+
+This project develops an end-to-end machine learning system to predict the nightly price of Airbnb listings in New York City.
+
+The project covers data analysis, data preprocessing, feature engineering, regression model comparison, hyperparameter tuning, model evaluation, and deployment through a Streamlit web application.
+
+## Dataset
+
+Dataset: New York City Airbnb Open Data (AB_NYC_2019.csv)
+
+The dataset contains Airbnb listing information including:
+
+- Location
+- Room type
+- Price
+- Minimum nights
+- Number of reviews
+- Reviews per month
+- Host listing count
+- Availability
+
+## Project Workflow
+
+The project follows the following workflow:
+
+1. Data loading and exploration
+2. Missing value analysis
+3. Duplicate and invalid-value checks
+4. Outlier analysis
+5. Data cleaning and preprocessing
+6. Feature engineering
+7. Exploratory data analysis
+8. Train-test split
+9. Regression model training
+10. Model comparison
+11. Random Forest hyperparameter tuning
+12. Final model evaluation
+13. Feature importance analysis
+14. Streamlit application development
+
+## Data Preprocessing
+
+The following preprocessing steps were performed:
+
+- Listings with zero price were removed.
+- Missing `reviews_per_month` values were replaced with 0 because they corresponded to listings with zero reviews.
+- `last_review` was removed from modelling.
+- Missing categorical values were handled during preprocessing.
+- Numerical features were standardized using StandardScaler.
+- Categorical features were encoded using OneHotEncoder.
+- Log transformations were applied to selected skewed numerical variables.
+- The target price was log-transformed for modelling.
+
+## Models Evaluated
+
+The following regression models were compared:
+
+| Model | MAE | RMSE | R² |
+|---|---:|---:|---:|
+| Linear Regression | 0.3375 | 0.4695 | 0.5410 |
+| Ridge Regression | 0.3375 | 0.4692 | 0.5415 |
+| Random Forest | 0.3147 | 0.4476 | 0.5829 |
+| Gradient Boosting | 0.3243 | 0.4536 | 0.5715 |
+
+Random Forest achieved the best initial performance based on the comparison metrics.
+
+## Hyperparameter Tuning
+
+Randomized Search was used to tune the Random Forest model.
+
+The tuned Random Forest was selected as the final model.
+
+### Final Model Performance
+
+- MAE: $55.28
+- RMSE: $180.17
+- R²: 0.1892
+
+## Important Features
+
+The most important features identified by the Random Forest model included:
+
+- Room type
+- Longitude
+- Latitude
+- Availability
+- Minimum nights
+- Reviews per month
+- Host listing count
+- Neighbourhood group
+- Number of reviews
+- Neighbourhood
+
+## Streamlit Application
+
+A Streamlit web application was developed to allow users to enter Airbnb listing information and receive an estimated nightly price.
+
+The application accepts information such as:
+
+- Latitude
+- Longitude
+- Minimum nights
+- Number of reviews
+- Reviews per month
+- Host listing count
+- Availability
+- Neighbourhood group
+- Neighbourhood
+- Room type
+
+## Application Testing
+
+The application was tested using realistic listing inputs.
+
+| Test | Location | Room Type | Predicted Price |
+|---|---|---|---:|
+| 1 | Manhattan / Midtown | Entire home/apt | $279.90 |
+| 2 | Brooklyn / Williamsburg | Private room | $81.61 |
+| 3 | Queens / Long Island City | Private room | $76.11 |
+
+## Limitations
+
+The model has several limitations:
+
+- Airbnb prices can vary due to factors that are not present in the dataset.
+- The model's predictive performance is limited, as indicated by the final R² value.
+- Location and room type have a strong influence on predictions.
+- The dataset represents a historical snapshot and may not reflect current Airbnb pricing.
+- Extreme and unusual listings can make price prediction difficult.
+
+
+
 
