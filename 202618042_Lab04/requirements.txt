@@ -1,0 +1,5 @@
+streamlit → web interface
+pandas → input DataFrame
+numpy → log transformation / reverse transformation
+scikit-learn → trained ML model
+joblib → loads your .pkl model
